@@ -46,10 +46,15 @@ education_names <- gsub("( |!!)", "_",
                         gsub("(Estimate!!Total!!|,)","",
                              variables$label[variables$name %in% education_vars]))
 
+employment_vars <- paste("B17005_0", c(paste("0", 1:9, sep=""), 10:22), sep="")
+employment_names <- gsub("( |!!)", "_", 
+                         gsub("(Estimate!!Total!!|,)","",
+                              variables$label[variables$name %in% employment_vars]))
+
 of_interest <- c(population_vars, income_vars, race_vars,
-                 housing_vars, mobility_vars, education_vars)
+                 housing_vars, mobility_vars, education_vars, employment_vars)
 of_interest_names <- c(population_names, income_names, race_names,
-                       housing_names, mobility_names, education_names)
+                       housing_names, mobility_names, education_names, employment_names)
 
 translation <- data.frame(variable=of_interest, 
                           census_var=of_interest_names, stringsAsFactors = FALSE)
